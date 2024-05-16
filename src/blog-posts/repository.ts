@@ -26,7 +26,12 @@ export class PrismaBlogPostRepository implements BlogPostRepository {
   }
 
   private parseFromDB(prismaBlogPost: PrismaBlogPost): BlogPost | null {
-    const blogPostDB = { ...prismaBlogPost, tags: prismaBlogPost.tags?.split(",") };
+    const blogPostDB = {
+      ...prismaBlogPost,
+      tags: Array.isArray(prismaBlogPost.tags)
+        ? prismaBlogPost.tags?.split(",")
+        : [],
+    };
     const blogPostDBParsed = BlogPostSchema.safeParse(blogPostDB);
     if (!blogPostDBParsed.success) {
       console.error(blogPostDBParsed.error);
