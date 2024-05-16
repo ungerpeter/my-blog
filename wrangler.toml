@@ -1,7 +1,9 @@
-name = "my-blog"
+name = "peters-blog"
 
 compatibility_date = "2024-04-01"
 compatibility_flags = ['nodejs_compat']
+main = "src/index.ts"
+minify = true
 
 [placement]
 mode = "smart"
@@ -9,4 +11,4 @@ mode = "smart"
 [[d1_databases]]
 binding = "DB"
 database_name = "peters-blog"
-database_id = "{db_id}"
+database_id = "91df5ff6-28ac-419a-a283-8ec31ec72106"
