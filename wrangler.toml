@@ -1,5 +1,5 @@
 name = "peters-blog"
-
+account_id = "f032d38c9306e096f558d34e2c410209"
 compatibility_date = "2024-04-01"
 compatibility_flags = ['nodejs_compat']
 main = "src/index.ts"
