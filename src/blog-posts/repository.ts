@@ -11,6 +11,7 @@ import { D1Database } from "@cloudflare/workers-types";
 export interface BlogPostRepository {
   allBlogPosts(): Promise<BlogPost[]>;
   findBlogPost(id: number): Promise<BlogPost | null>;
+  findBlogPostBySlug(slug: string): Promise<BlogPost | null>;
   createBlogPost(blogPost: CreateBlogPost): Promise<BlogPost>;
   updateBlogPost(blogPost: UpdateBlogPost): Promise<BlogPost | null>;
   deleteBlogPost(id: number): Promise<boolean>;
@@ -52,6 +53,17 @@ export class PrismaBlogPostRepository implements BlogPostRepository {
   async findBlogPost(id: number): Promise<BlogPost | null> {
     return this.prismaClient.blogPost
       .findFirst({ where: { id } })
+      .then((prismaBlogPost) => {
+        if (!prismaBlogPost) {
+          return null;
+        }
+        return this.parseFromDB(prismaBlogPost);
+      });
+  }
+
+  async findBlogPostBySlug(slug: string): Promise<BlogPost | null> {
+    return this.prismaClient.blogPost
+      .findFirst({ where: { slug } })
       .then((prismaBlogPost) => {
         if (!prismaBlogPost) {
           return null;
