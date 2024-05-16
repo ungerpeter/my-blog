@@ -5,5 +5,5 @@ compatibility_flags = ['nodejs_compat']
 
 [[d1_databases]]
 binding = "DB"
-database_name = "${db_name}"
+database_name = "peters-blog"
 database_id = "{db_id}"

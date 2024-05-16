@@ -2,14 +2,19 @@
   "scripts": {
     "dev": "wrangler dev src/index.ts",
     "deploy": "wrangler deploy --minify src/index.ts",
-    "test": "vitest --run"
+    "test": "vitest --run",
+    "migrate:local": "bunx wrangler d1 migrations apply peters-blog --local",
+    "migrate:remote": "bunx wrangler d1 migrations apply peters-blog --remote"
   },
   "dependencies": {
+    "@prisma/adapter-d1": "^5.14.0",
+    "@prisma/client": "^5.14.0",
     "hono": "^4.3.7"
   },
   "devDependencies": {
     "@cloudflare/vitest-pool-workers": "^0.2.10",
     "@cloudflare/workers-types": "^4.20240403.0",
+    "prisma": "^5.14.0",
     "typescript": "^5.4.5",
     "vitest": "1.5.0",
     "wrangler": "^3.53.0"
