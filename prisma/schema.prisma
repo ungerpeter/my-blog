@@ -6,11 +6,6 @@ generator client {
   previewFeatures = ["driverAdapters"]
 }
 
-datasource db {
-  provider = "sqlite"
-  url      = env("DATABASE_URL")
-}
-
 model Author {
   id             Int        @id @default(autoincrement())
   createdAt      DateTime   @default(now())
